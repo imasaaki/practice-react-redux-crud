@@ -1,6 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types"
-import { toBeInTheDOM } from "@testing-library/jest-dom/dist/matchers";
+import React, {Component} from "react";
 
 // function App() {
 //   return (
@@ -12,31 +10,30 @@ import { toBeInTheDOM } from "@testing-library/jest-dom/dist/matchers";
 
 // }
 
-const App =() => {
-  const profiles = [
-    {name: "Taro", age: 100},
-    {name: "Hanako", age: 15},
-    {name: "NoNmae", age: 300},
-  ]
-  return (
-    <React.Fragment>
-      {
-        profiles.map((profile, index)=> {
-          return <User name={profile.name} age={profile.age} key={index}/>
-        })
-      }
-    </React.Fragment>
-  )
+const App =() => (<Counter></Counter>)
+class Counter extends Component {
+  constructor(props){
+    super(props)
+    this.state = {count : 0}
+  }
 
-}
+  handlePlusButton = ()=> {
+    this.setState({count: this.state.count + 1})
+  }
+  handleMinusButton = ()=> {
+    this.setState({count: this.state.count - 1})
+  }
 
-const User = (props)=> {
-  return <div>HI, I am {props.name}!, and {props.age} year old</div>
-}
-
-User.prototype ={
-  name: PropTypes.string,
-  age : PropTypes.number,
+  render() {
+    console.log(this.state)
+    return (
+      <React.Fragment>
+        <div>counter: {this.state.count}</div>
+        <button onClick={this.handlePlusButton}>+1</button>
+        <button onClick={this.handleMinusButton}>-1</button>
+      </React.Fragment>
+    )
+  }
 }
 
 export default App;

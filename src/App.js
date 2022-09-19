@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types"
+import { toBeInTheDOM } from "@testing-library/jest-dom/dist/matchers";
 
 // function App() {
 //   return (
@@ -14,7 +16,7 @@ const App =() => {
   const profiles = [
     {name: "Taro", age: 100},
     {name: "Hanako", age: 15},
-    {name: "Hanako"},
+    {name: "NoNmae", age: 300},
   ]
   return (
     <React.Fragment>
@@ -32,9 +34,9 @@ const User = (props)=> {
   return <div>HI, I am {props.name}!, and {props.age} year old</div>
 }
 
-User.defaultProps ={
-  age: 1
+User.prototype ={
+  name: PropTypes.string,
+  age : PropTypes.number,
 }
-
 
 export default App;

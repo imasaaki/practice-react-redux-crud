@@ -11,19 +11,29 @@ import React from "react";
 // }
 
 const App =() => {
+  const profiles = [
+    {name: "Taro", age: 100},
+    {name: "Hanako", age: 15},
+    {name: "Hanako"},
+  ]
   return (
     <React.Fragment>
-      <Cat/>
-      <Cat/>
-      <Cat/>
-      <Cat/>
+      {
+        profiles.map((profile, index)=> {
+          return <User name={profile.name} age={profile.age} key={index}/>
+        })
+      }
     </React.Fragment>
   )
 
 }
 
-const Cat = ()=> {
-  return <div>Meow!!</div>
+const User = (props)=> {
+  return <div>HI, I am {props.name}!, and {props.age} year old</div>
+}
+
+User.defaultProps ={
+  age: 1
 }
 
 
